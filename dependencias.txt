@@ -1,0 +1,3 @@
+pip install flask-swagger
+pip install flask-swagger-ui
+pip install -U flask-cors
