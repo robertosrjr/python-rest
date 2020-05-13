@@ -5,7 +5,7 @@ from flask_cors import CORS
 from api.controller.userController import UserController
 
 app = Flask(__name__)
-cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+cors = CORS(app, resources={r"*": {"origins": "*"}})
 
 SWAGGER_URL = '/api/docs'  # URL for exposing Swagger UI (without trailing '/')
 API_URL = 'http://127.0.0.1:5000/spec'  # Our API url (can of course be a local resource)
@@ -14,7 +14,8 @@ API_URL = 'http://127.0.0.1:5000/spec'  # Our API url (can of course be a local 
 def spec():
     swag = swagger(app)
     swag['info']['version'] = "1.0"
-    swag['info']['title'] = "My API"
+    swag['info']['title'] = "My First Rest API in Pyhton"
+    swag['info']['description'] = "Python 3.8 + Flask + Swagger"
     return jsonify(swag)
 
 # Call factory function to create our blueprint

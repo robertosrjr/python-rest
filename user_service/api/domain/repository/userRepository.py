@@ -1,4 +1,8 @@
+from api.domain.google.firebase import FireBase 
+
 class UserRepository:
+
+    firebase = FireBase()
 
     USER = {
     '1': {'name': 'Mark', 'age': 23, 'spec': 'math'},
@@ -8,4 +12,7 @@ class UserRepository:
     }
 
     def get(self):
-        return self.USER
+       return self.firebase.get()
+
+    def add(self, USER):
+        self.firebase.add()
