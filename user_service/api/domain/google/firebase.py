@@ -1,6 +1,8 @@
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
+from flask import jsonify 
+from api.domain.model.userCollection import User
 
 class FireBase():
 
@@ -21,8 +23,8 @@ class FireBase():
     
     def get(self):
         users_ref = self.db.collection(u'users')
-        docs = users_ref.stream()
-        return {}
+        all_users = [doc.to_dict() for doc in users_ref.stream()]
+        return jsonify(all_users)
 
     def add(self):
         doc_ref = self.db.collection(u'users').document(u'alovelace')
