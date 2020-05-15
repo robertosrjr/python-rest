@@ -12,7 +12,7 @@ class FireBase():
 
         print("bootServer...")
         try:
-            cred = credentials.Certificate('user_service/static/google/firestore/data-base-teste-277100-7d52d362ce70.json')
+            cred = credentials.Certificate('user_service/static/google/firestore/data-base-teste-277100-8a0d28ccf452.json')
             firebase_admin.initialize_app(cred)
             self.db = firestore.client()
             self.add()
@@ -20,6 +20,8 @@ class FireBase():
             print("Oops! Erro ao recuperar as credenciais")
     
     def get(self):
+        users_ref = self.db.collection(u'users')
+        docs = users_ref.stream()
         return {}
 
     def add(self):
